@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Milans 3D Prints</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
+  <base href="./">
 </head>
 <body>
   <header>
@@ -27,34 +28,34 @@
       <h2 style="text-align:center; color:#2d4059;">Featured Products</h2>
       <div class="products">
         <div class="product" onclick="openGallery(0)">
-          <img src="images/flexi.webp" alt="flexi dino">
+          <img src="./images/flexi.webp" alt="flexi dino">
           <div class="gallery-indicator">+3 images</div>
           <h3>flexi dino</h3>
           <p>a flexi dino that can twist and tur. great for kids.</p>
           <div class="price">€7</div>
         </div>
         <div class="product" onclick="openGallery(1)">
-          <img src="images/keychain.webp" alt="keychain phone stand">
+          <img src="./images/keychain.webp" alt="keychain phone stand">
           <div class="gallery-indicator">+2 images</div>
           <h3>keychain phone stand</h3>
           <p>a phone stand for your keychain.</p>
           <div class="price">€5</div>
         </div>
         <div class="product" onclick="openGallery(2)">
-          <img src="images/kraken.webp" alt="kraken phone stand">
+          <img src="./images/kraken.webp" alt="kraken phone stand">
           <div class="gallery-indicator">+2 images</div>
           <h3>kraken phone stand</h3>
           <p>A nice, stylish and unique phone stand.</p>
           <div class="price">€10</div>
         </div>
         <div class="product" onclick="openGallery(3)">
-          <img src="images/music.webp" alt="3D Printed Key Holder">
+          <img src="./images/music.webp" alt="3D Printed Key Holder">
           <h3>Viral Tiktok music box</h3>
           <p>Never lose your keys again! Modern design, easy to mount.</p>
           <div class="price">€10</div>
         </div>
         <div class="product" onclick="openGallery(4)">
-            <img src="images/car.JPG" alt="keychain">
+            <img src="./images/car.JPG" alt="keychain">
             <h3>Personalized keychain!</h3>
             <p>your own personalized keychain with your name on it!</p>
             <div class="price">€5</div>
@@ -89,11 +90,11 @@
 
   <script>
     const productGalleries = [
-        ['images/flexi.webp', 'images/flexi2.webp', 'images/flexi3.webp', 'images/flexi4.webp'],
-        ['images/keychain.webp', 'images/keychain2.webp', 'images/keychain3.webp'],
-        ['images/kraken.webp', 'images/kraken2.webp', 'images/kraken3.webp'],
-        ['images/music.webp', 'images/music2.webp', 'images/music3.webp'],
-        ['images/car.JPG', 'images/car2.JPG', 'images/car3.JPG']
+        ['./images/flexi.webp', './images/flexi2.webp', './images/flexi3.webp', './images/flexi4.webp'],
+        ['./images/keychain.webp', './images/keychain2.webp', './images/keychain3.webp'],
+        ['./images/kraken.webp', './images/kraken2.webp', './images/kraken3.webp'],
+        ['./images/music.webp', './images/music2.webp', './images/music3.webp'],
+        ['./images/car.JPG', './images/car2.JPG', './images/car3.JPG']
     ];
 
     let currentGallery = [];
@@ -115,3 +116,16 @@
         if (currentImageIndex >= currentGallery.length) currentImageIndex = 0;
         if (currentImageIndex < 0) currentImageIndex = currentGallery.length - 1;
         document.getElementById('modalImage').src = currentGallery[currentImageIndex];
+    }
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('imageModal').style.display === 'flex') {
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+            if (e.key === 'Escape') closeGallery();
+        }
+    });
+  </script>
+</body>
+</html>
